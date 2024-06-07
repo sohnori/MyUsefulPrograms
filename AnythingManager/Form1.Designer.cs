@@ -28,146 +28,148 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Program1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
-            button11 = new Button();
-            button12 = new Button();
+            programBt1 = new Button();
+            programBt2 = new Button();
+            programBt3 = new Button();
+            programBt4 = new Button();
+            programBt5 = new Button();
+            programBt6 = new Button();
+            programBt7 = new Button();
+            programBt8 = new Button();
+            programBt9 = new Button();
+            programBt10 = new Button();
+            programBt11 = new Button();
+            programBt12 = new Button();
             SuspendLayout();
             // 
-            // Program1
+            // programBt1
             // 
-            Program1.Location = new Point(12, 12);
-            Program1.Name = "Program1";
-            Program1.Size = new Size(260, 23);
-            Program1.TabIndex = 0;
-            Program1.Text = "GetConputerInfo";
-            Program1.UseVisualStyleBackColor = true;
-            Program1.Click += Program1_Click;
+            programBt1.Location = new Point(12, 12);
+            programBt1.Name = "programBt1";
+            programBt1.Size = new Size(260, 23);
+            programBt1.TabIndex = 0;
+            programBt1.Text = "GetComputerInfo";
+            programBt1.UseVisualStyleBackColor = true;
+            programBt1.Click += Program1_Click;
             // 
-            // button2
+            // programBt2
             // 
-            button2.Location = new Point(12, 41);
-            button2.Name = "button2";
-            button2.Size = new Size(260, 23);
-            button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            programBt2.Location = new Point(12, 41);
+            programBt2.Name = "programBt2";
+            programBt2.Size = new Size(260, 23);
+            programBt2.TabIndex = 1;
+            programBt2.Text = "ConvertData";
+            programBt2.UseVisualStyleBackColor = true;
+            programBt2.Click += button2_Click;
             // 
-            // button3
+            // programBt3
             // 
-            button3.Location = new Point(12, 70);
-            button3.Name = "button3";
-            button3.Size = new Size(260, 23);
-            button3.TabIndex = 2;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            programBt3.Location = new Point(12, 70);
+            programBt3.Name = "programBt3";
+            programBt3.Size = new Size(260, 23);
+            programBt3.TabIndex = 2;
+            programBt3.Text = "SerialComm";
+            programBt3.UseVisualStyleBackColor = true;
+            programBt3.Click += button3_Click;
             // 
-            // button4
+            // programBt4
             // 
-            button4.Location = new Point(12, 99);
-            button4.Name = "button4";
-            button4.Size = new Size(260, 23);
-            button4.TabIndex = 3;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
+            programBt4.Location = new Point(12, 99);
+            programBt4.Name = "programBt4";
+            programBt4.Size = new Size(260, 23);
+            programBt4.TabIndex = 3;
+            programBt4.Text = "button4";
+            programBt4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // programBt5
             // 
-            button5.Location = new Point(12, 128);
-            button5.Name = "button5";
-            button5.Size = new Size(260, 23);
-            button5.TabIndex = 4;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
+            programBt5.Location = new Point(12, 128);
+            programBt5.Name = "programBt5";
+            programBt5.Size = new Size(260, 23);
+            programBt5.TabIndex = 4;
+            programBt5.Text = "button5";
+            programBt5.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // programBt6
             // 
-            button6.Location = new Point(12, 157);
-            button6.Name = "button6";
-            button6.Size = new Size(260, 23);
-            button6.TabIndex = 5;
-            button6.Text = "button6";
-            button6.UseVisualStyleBackColor = true;
+            programBt6.Location = new Point(12, 157);
+            programBt6.Name = "programBt6";
+            programBt6.Size = new Size(260, 23);
+            programBt6.TabIndex = 5;
+            programBt6.Text = "button6";
+            programBt6.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // programBt7
             // 
-            button7.Location = new Point(12, 186);
-            button7.Name = "button7";
-            button7.Size = new Size(260, 23);
-            button7.TabIndex = 6;
-            button7.Text = "button7";
-            button7.UseVisualStyleBackColor = true;
+            programBt7.Location = new Point(12, 186);
+            programBt7.Name = "programBt7";
+            programBt7.Size = new Size(260, 23);
+            programBt7.TabIndex = 6;
+            programBt7.Text = "button7";
+            programBt7.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // programBt8
             // 
-            button8.Location = new Point(12, 215);
-            button8.Name = "button8";
-            button8.Size = new Size(260, 23);
-            button8.TabIndex = 7;
-            button8.Text = "button8";
-            button8.UseVisualStyleBackColor = true;
+            programBt8.Location = new Point(12, 215);
+            programBt8.Name = "programBt8";
+            programBt8.Size = new Size(260, 23);
+            programBt8.TabIndex = 7;
+            programBt8.Text = "button8";
+            programBt8.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // programBt9
             // 
-            button9.Location = new Point(12, 244);
-            button9.Name = "button9";
-            button9.Size = new Size(260, 23);
-            button9.TabIndex = 8;
-            button9.Text = "button9";
-            button9.UseVisualStyleBackColor = true;
+            programBt9.Location = new Point(12, 244);
+            programBt9.Name = "programBt9";
+            programBt9.Size = new Size(260, 23);
+            programBt9.TabIndex = 8;
+            programBt9.Text = "button9";
+            programBt9.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // programBt10
             // 
-            button10.Location = new Point(12, 273);
-            button10.Name = "button10";
-            button10.Size = new Size(260, 23);
-            button10.TabIndex = 9;
-            button10.Text = "button10";
-            button10.UseVisualStyleBackColor = true;
+            programBt10.Location = new Point(12, 273);
+            programBt10.Name = "programBt10";
+            programBt10.Size = new Size(260, 23);
+            programBt10.TabIndex = 9;
+            programBt10.Text = "button10";
+            programBt10.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // programBt11
             // 
-            button11.Location = new Point(12, 302);
-            button11.Name = "button11";
-            button11.Size = new Size(260, 23);
-            button11.TabIndex = 10;
-            button11.Text = "button11";
-            button11.UseVisualStyleBackColor = true;
+            programBt11.Location = new Point(12, 302);
+            programBt11.Name = "programBt11";
+            programBt11.Size = new Size(260, 23);
+            programBt11.TabIndex = 10;
+            programBt11.Text = "button11";
+            programBt11.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // programBt12
             // 
-            button12.Location = new Point(12, 331);
-            button12.Name = "button12";
-            button12.Size = new Size(260, 23);
-            button12.TabIndex = 11;
-            button12.Text = "button12";
-            button12.UseVisualStyleBackColor = true;
+            programBt12.Location = new Point(12, 331);
+            programBt12.Name = "programBt12";
+            programBt12.Size = new Size(260, 23);
+            programBt12.TabIndex = 11;
+            programBt12.Text = "button12";
+            programBt12.UseVisualStyleBackColor = true;
             // 
             // AnythingManagerForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(284, 361);
-            Controls.Add(button12);
-            Controls.Add(button11);
-            Controls.Add(button10);
-            Controls.Add(button9);
-            Controls.Add(button8);
-            Controls.Add(button7);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(Program1);
+            Controls.Add(programBt12);
+            Controls.Add(programBt11);
+            Controls.Add(programBt10);
+            Controls.Add(programBt9);
+            Controls.Add(programBt8);
+            Controls.Add(programBt7);
+            Controls.Add(programBt6);
+            Controls.Add(programBt5);
+            Controls.Add(programBt4);
+            Controls.Add(programBt3);
+            Controls.Add(programBt2);
+            Controls.Add(programBt1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             KeyPreview = true;
             MaximizeBox = false;
@@ -179,17 +181,17 @@
 
         #endregion
 
-        private Button Program1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button8;
-        private Button button9;
-        private Button button10;
-        private Button button11;
-        private Button button12;
+        private Button programBt1;
+        private Button programBt2;
+        private Button programBt3;
+        private Button programBt4;
+        private Button programBt5;
+        private Button programBt6;
+        private Button programBt7;
+        private Button programBt8;
+        private Button programBt9;
+        private Button programBt10;
+        private Button programBt11;
+        private Button programBt12;
     }
 }

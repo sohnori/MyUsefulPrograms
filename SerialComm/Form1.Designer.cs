@@ -405,9 +405,11 @@
             Controls.Add(rtbPrint);
             Controls.Add(tbState);
             Controls.Add(btConn);
+            KeyPreview = true;
             MinimumSize = new Size(600, 300);
             Name = "Form1";
             Text = "SerialComm";
+            KeyDown += SerialCommForm_KeyDown;
             Load += Form1_Load;
             gbPrint.ResumeLayout(false);
             gbPrint.PerformLayout();

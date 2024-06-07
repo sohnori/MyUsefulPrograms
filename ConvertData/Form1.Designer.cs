@@ -325,12 +325,14 @@
             ClientSize = new Size(454, 417);
             Controls.Add(gbResult);
             Controls.Add(gbData);
+            KeyPreview = true;
             MaximizeBox = false;
             MaximumSize = new Size(470, 456);
             MinimizeBox = false;
             MinimumSize = new Size(470, 456);
             Name = "Form1";
             Text = "ConvertData";
+            KeyDown += ConvertDataForm_KeyDown;
             gbData.ResumeLayout(false);
             gbData.PerformLayout();
             gbResult.ResumeLayout(false);

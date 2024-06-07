@@ -8,7 +8,18 @@ namespace SerialComm
         {
             InitializeComponent();
         }
-
+        private void SerialCommForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.D0:
+                        this.Location = new Point(0, 0);
+                        break;
+                }
+            }
+        }
         private void btConn_Click(object sender, EventArgs e)
         {
             SerialComm.Form2 dlgConn = new SerialComm.Form2();
