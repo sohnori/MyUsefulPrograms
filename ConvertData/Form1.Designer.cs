@@ -29,7 +29,15 @@
         private void InitializeComponent()
         {
             gbData = new GroupBox();
+            rbDoubleD = new RadioButton();
+            ckbEscape = new CheckBox();
+            rbLongD = new RadioButton();
+            rbIntD = new RadioButton();
+            rbShortD = new RadioButton();
+            rbByteD = new RadioButton();
+            cbUserdefined = new ComboBox();
             rbFloatD = new RadioButton();
+            rbUserDefinedD = new RadioButton();
             btConvert = new Button();
             rbBinD = new RadioButton();
             rbOctD = new RadioButton();
@@ -38,13 +46,12 @@
             rbAsciiD = new RadioButton();
             tbData = new TextBox();
             gbResult = new GroupBox();
+            ckbEndian = new CheckBox();
             btClearR = new Button();
             rbDecR = new RadioButton();
             ckbOrderStamp = new CheckBox();
             textBox3 = new TextBox();
             ckbSigned = new CheckBox();
-            cbUserdefined = new ComboBox();
-            rbUserDefinedR = new RadioButton();
             rbBinR = new RadioButton();
             rbOctR = new RadioButton();
             rbHexR = new RadioButton();
@@ -56,14 +63,21 @@
             rbByteR = new RadioButton();
             rbAsciiR = new RadioButton();
             tbResult = new TextBox();
-            ckbEscape = new CheckBox();
             gbData.SuspendLayout();
             gbResult.SuspendLayout();
             SuspendLayout();
             // 
             // gbData
             // 
+            gbData.Controls.Add(rbDoubleD);
+            gbData.Controls.Add(ckbEscape);
+            gbData.Controls.Add(rbLongD);
+            gbData.Controls.Add(rbIntD);
+            gbData.Controls.Add(rbShortD);
+            gbData.Controls.Add(rbByteD);
+            gbData.Controls.Add(cbUserdefined);
             gbData.Controls.Add(rbFloatD);
+            gbData.Controls.Add(rbUserDefinedD);
             gbData.Controls.Add(btConvert);
             gbData.Controls.Add(rbBinD);
             gbData.Controls.Add(rbOctD);
@@ -73,10 +87,84 @@
             gbData.Controls.Add(tbData);
             gbData.Location = new Point(12, 12);
             gbData.Name = "gbData";
-            gbData.Size = new Size(429, 84);
+            gbData.Size = new Size(429, 126);
             gbData.TabIndex = 0;
             gbData.TabStop = false;
             gbData.Text = "Data";
+            // 
+            // rbDoubleD
+            // 
+            rbDoubleD.AutoSize = true;
+            rbDoubleD.Location = new Point(224, 74);
+            rbDoubleD.Name = "rbDoubleD";
+            rbDoubleD.Size = new Size(64, 19);
+            rbDoubleD.TabIndex = 12;
+            rbDoubleD.Text = "Double";
+            rbDoubleD.UseVisualStyleBackColor = true;
+            rbDoubleD.CheckedChanged += RbsCommonSet;
+            // 
+            // ckbEscape
+            // 
+            ckbEscape.AutoSize = true;
+            ckbEscape.Location = new Point(294, 74);
+            ckbEscape.Name = "ckbEscape";
+            ckbEscape.Size = new Size(113, 19);
+            ckbEscape.TabIndex = 13;
+            ckbEscape.Text = "Escape Seq.처리";
+            ckbEscape.UseVisualStyleBackColor = true;
+            // 
+            // rbLongD
+            // 
+            rbLongD.AutoSize = true;
+            rbLongD.Location = new Point(166, 74);
+            rbLongD.Name = "rbLongD";
+            rbLongD.Size = new Size(52, 19);
+            rbLongD.TabIndex = 11;
+            rbLongD.Text = "Long";
+            rbLongD.UseVisualStyleBackColor = true;
+            rbLongD.CheckedChanged += RbsCommonSet;
+            // 
+            // rbIntD
+            // 
+            rbIntD.AutoSize = true;
+            rbIntD.Location = new Point(121, 74);
+            rbIntD.Name = "rbIntD";
+            rbIntD.Size = new Size(39, 19);
+            rbIntD.TabIndex = 10;
+            rbIntD.Text = "Int";
+            rbIntD.UseVisualStyleBackColor = true;
+            rbIntD.CheckedChanged += RbsCommonSet;
+            // 
+            // rbShortD
+            // 
+            rbShortD.AutoSize = true;
+            rbShortD.Location = new Point(61, 74);
+            rbShortD.Name = "rbShortD";
+            rbShortD.Size = new Size(54, 19);
+            rbShortD.TabIndex = 9;
+            rbShortD.Text = "Short";
+            rbShortD.UseVisualStyleBackColor = true;
+            rbShortD.CheckedChanged += RbsCommonSet;
+            // 
+            // rbByteD
+            // 
+            rbByteD.AutoSize = true;
+            rbByteD.Location = new Point(7, 74);
+            rbByteD.Name = "rbByteD";
+            rbByteD.Size = new Size(48, 19);
+            rbByteD.TabIndex = 8;
+            rbByteD.Text = "Byte";
+            rbByteD.UseVisualStyleBackColor = true;
+            rbByteD.CheckedChanged += RbsCommonSet;
+            // 
+            // cbUserdefined
+            // 
+            cbUserdefined.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbUserdefined.FormattingEnabled = true;
+            cbUserdefined.Location = new Point(318, 95);
+            cbUserdefined.Name = "cbUserdefined";
+            cbUserdefined.Size = new Size(105, 23);
+            cbUserdefined.TabIndex = 15;
             // 
             // rbFloatD
             // 
@@ -85,10 +173,20 @@
             rbFloatD.Name = "rbFloatD";
             rbFloatD.Size = new Size(130, 19);
             rbFloatD.TabIndex = 7;
-            rbFloatD.TabStop = true;
             rbFloatD.Text = "Float(HEX, IEEE754)";
             rbFloatD.UseVisualStyleBackColor = true;
-            rbFloatD.CheckedChanged += rbFloatD_CheckedChanged;
+            rbFloatD.CheckedChanged += RbFloatD_CheckedChanged;
+            // 
+            // rbUserDefinedD
+            // 
+            rbUserDefinedD.AutoSize = true;
+            rbUserDefinedD.Location = new Point(219, 96);
+            rbUserDefinedD.Name = "rbUserDefinedD";
+            rbUserDefinedD.Size = new Size(90, 19);
+            rbUserDefinedD.TabIndex = 14;
+            rbUserDefinedD.TabStop = true;
+            rbUserDefinedD.Text = "UserDefined";
+            rbUserDefinedD.UseVisualStyleBackColor = true;
             // 
             // btConvert
             // 
@@ -98,7 +196,7 @@
             btConvert.TabIndex = 1;
             btConvert.Text = "Convert";
             btConvert.UseVisualStyleBackColor = true;
-            btConvert.Click += btConvert_Click;
+            btConvert.Click += BtConvert_Click;
             // 
             // rbBinD
             // 
@@ -109,7 +207,7 @@
             rbBinD.TabIndex = 6;
             rbBinD.Text = "BIN";
             rbBinD.UseVisualStyleBackColor = true;
-            rbBinD.CheckedChanged += rbBinD_CheckedChanged;
+            rbBinD.CheckedChanged += RbBinD_CheckedChanged;
             // 
             // rbOctD
             // 
@@ -120,7 +218,7 @@
             rbOctD.TabIndex = 5;
             rbOctD.Text = "OCT";
             rbOctD.UseVisualStyleBackColor = true;
-            rbOctD.CheckedChanged += rbOctD_CheckedChanged;
+            rbOctD.CheckedChanged += RbOctD_CheckedChanged;
             // 
             // rbHexD
             // 
@@ -131,7 +229,7 @@
             rbHexD.TabIndex = 4;
             rbHexD.Text = "HEX";
             rbHexD.UseVisualStyleBackColor = true;
-            rbHexD.CheckedChanged += rbHexD_CheckedChanged;
+            rbHexD.CheckedChanged += RbHexD_CheckedChanged;
             // 
             // rbDecD
             // 
@@ -142,7 +240,7 @@
             rbDecD.TabIndex = 3;
             rbDecD.Text = "DEC";
             rbDecD.UseVisualStyleBackColor = true;
-            rbDecD.CheckedChanged += rbDecD_CheckedChanged;
+            rbDecD.CheckedChanged += RbDecD_CheckedChanged;
             // 
             // rbAsciiD
             // 
@@ -155,7 +253,7 @@
             rbAsciiD.TabStop = true;
             rbAsciiD.Text = "ASCII";
             rbAsciiD.UseVisualStyleBackColor = true;
-            rbAsciiD.CheckedChanged += rbAsciiD_CheckedChanged;
+            rbAsciiD.CheckedChanged += RbAsciiD_CheckedChanged;
             // 
             // tbData
             // 
@@ -163,17 +261,17 @@
             tbData.Name = "tbData";
             tbData.Size = new Size(336, 23);
             tbData.TabIndex = 0;
+            tbData.KeyDown += TbData_KeyDown;
+            tbData.KeyPress += TbData_KeyPress;
             // 
             // gbResult
             // 
-            gbResult.Controls.Add(ckbEscape);
+            gbResult.Controls.Add(ckbEndian);
             gbResult.Controls.Add(btClearR);
             gbResult.Controls.Add(rbDecR);
             gbResult.Controls.Add(ckbOrderStamp);
             gbResult.Controls.Add(textBox3);
             gbResult.Controls.Add(ckbSigned);
-            gbResult.Controls.Add(cbUserdefined);
-            gbResult.Controls.Add(rbUserDefinedR);
             gbResult.Controls.Add(rbBinR);
             gbResult.Controls.Add(rbOctR);
             gbResult.Controls.Add(rbHexR);
@@ -185,13 +283,24 @@
             gbResult.Controls.Add(rbByteR);
             gbResult.Controls.Add(rbAsciiR);
             gbResult.Controls.Add(tbResult);
-            gbResult.Location = new Point(12, 102);
+            gbResult.Location = new Point(12, 144);
             gbResult.Name = "gbResult";
-            gbResult.Size = new Size(429, 332);
+            gbResult.Size = new Size(429, 302);
             gbResult.TabIndex = 1;
             gbResult.TabStop = false;
             gbResult.Text = "Result";
-            gbResult.Enter += gbResult_Enter;
+            // 
+            // ckbEndian
+            // 
+            ckbEndian.AutoSize = true;
+            ckbEndian.Enabled = false;
+            ckbEndian.Location = new Point(252, 276);
+            ckbEndian.Name = "ckbEndian";
+            ckbEndian.Size = new Size(102, 19);
+            ckbEndian.TabIndex = 18;
+            ckbEndian.TabStop = false;
+            ckbEndian.Text = "ReverseEndian";
+            ckbEndian.UseVisualStyleBackColor = true;
             // 
             // btClearR
             // 
@@ -201,7 +310,7 @@
             btClearR.TabIndex = 7;
             btClearR.Text = "Clear";
             btClearR.UseVisualStyleBackColor = true;
-            btClearR.Click += btClearR_Click;
+            btClearR.Click += BtClearR_Click;
             // 
             // rbDecR
             // 
@@ -211,13 +320,14 @@
             rbDecR.Name = "rbDecR";
             rbDecR.Size = new Size(48, 19);
             rbDecR.TabIndex = 9;
+            rbDecR.TabStop = true;
             rbDecR.Text = "DEC";
             rbDecR.UseVisualStyleBackColor = true;
             // 
             // ckbOrderStamp
             // 
             ckbOrderStamp.AutoSize = true;
-            ckbOrderStamp.Location = new Point(144, 304);
+            ckbOrderStamp.Location = new Point(155, 276);
             ckbOrderStamp.Name = "ckbOrderStamp";
             ckbOrderStamp.Size = new Size(91, 19);
             ckbOrderStamp.TabIndex = 17;
@@ -227,42 +337,25 @@
             // textBox3
             // 
             textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(6, 310);
+            textBox3.Location = new Point(6, 279);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
             textBox3.Size = new Size(100, 16);
-            textBox3.TabIndex = 16;
+            textBox3.TabIndex = 14;
             textBox3.TabStop = false;
             textBox3.Text = "Testing......";
             // 
             // ckbSigned
             // 
             ckbSigned.AutoSize = true;
-            ckbSigned.Location = new Point(360, 304);
+            ckbSigned.Enabled = false;
+            ckbSigned.Location = new Point(360, 276);
             ckbSigned.Name = "ckbSigned";
             ckbSigned.Size = new Size(63, 19);
-            ckbSigned.TabIndex = 19;
+            ckbSigned.TabIndex = 20;
+            ckbSigned.TabStop = false;
             ckbSigned.Text = "Signed";
             ckbSigned.UseVisualStyleBackColor = true;
-            // 
-            // cbUserdefined
-            // 
-            cbUserdefined.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbUserdefined.FormattingEnabled = true;
-            cbUserdefined.Location = new Point(318, 275);
-            cbUserdefined.Name = "cbUserdefined";
-            cbUserdefined.Size = new Size(105, 23);
-            cbUserdefined.TabIndex = 15;
-            // 
-            // rbUserDefinedR
-            // 
-            rbUserDefinedR.AutoSize = true;
-            rbUserDefinedR.Location = new Point(215, 279);
-            rbUserDefinedR.Name = "rbUserDefinedR";
-            rbUserDefinedR.Size = new Size(90, 19);
-            rbUserDefinedR.TabIndex = 14;
-            rbUserDefinedR.Text = "UserDefined";
-            rbUserDefinedR.UseVisualStyleBackColor = true;
             // 
             // rbBinR
             // 
@@ -271,6 +364,7 @@
             rbBinR.Name = "rbBinR";
             rbBinR.Size = new Size(44, 19);
             rbBinR.TabIndex = 12;
+            rbBinR.TabStop = true;
             rbBinR.Text = "BIN";
             rbBinR.UseVisualStyleBackColor = true;
             // 
@@ -281,6 +375,7 @@
             rbOctR.Name = "rbOctR";
             rbOctR.Size = new Size(48, 19);
             rbOctR.TabIndex = 11;
+            rbOctR.TabStop = true;
             rbOctR.Text = "OCT";
             rbOctR.UseVisualStyleBackColor = true;
             // 
@@ -315,6 +410,7 @@
             rbFloatR.Name = "rbFloatR";
             rbFloatR.Size = new Size(130, 19);
             rbFloatR.TabIndex = 13;
+            rbFloatR.TabStop = true;
             rbFloatR.Text = "Float(HEX, IEEE754)";
             rbFloatR.UseVisualStyleBackColor = true;
             // 
@@ -359,6 +455,7 @@
             rbByteR.Name = "rbByteR";
             rbByteR.Size = new Size(48, 19);
             rbByteR.TabIndex = 2;
+            rbByteR.TabStop = true;
             rbByteR.Text = "Byte";
             rbByteR.UseVisualStyleBackColor = true;
             // 
@@ -370,6 +467,7 @@
             rbAsciiR.Name = "rbAsciiR";
             rbAsciiR.Size = new Size(54, 19);
             rbAsciiR.TabIndex = 8;
+            rbAsciiR.TabStop = true;
             rbAsciiR.Text = "ASCII";
             rbAsciiR.UseVisualStyleBackColor = true;
             // 
@@ -384,28 +482,18 @@
             tbResult.Size = new Size(417, 194);
             tbResult.TabIndex = 0;
             // 
-            // ckbEscape
-            // 
-            ckbEscape.AutoSize = true;
-            ckbEscape.Location = new Point(241, 304);
-            ckbEscape.Name = "ckbEscape";
-            ckbEscape.Size = new Size(113, 19);
-            ckbEscape.TabIndex = 18;
-            ckbEscape.Text = "Escape Seq.처리";
-            ckbEscape.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(454, 446);
+            ClientSize = new Size(454, 461);
             Controls.Add(gbResult);
             Controls.Add(gbData);
             KeyPreview = true;
             MaximizeBox = false;
-            MaximumSize = new Size(470, 485);
+            MaximumSize = new Size(470, 500);
             MinimizeBox = false;
-            MinimumSize = new Size(470, 485);
+            MinimumSize = new Size(470, 500);
             Name = "Form1";
             Text = "ConvertData";
             KeyDown += ConvertDataForm_KeyDown;
@@ -435,7 +523,7 @@
         private RadioButton rbIntegerR;
         private RadioButton rbDoubleR;
         private RadioButton rbFloatR;
-        private RadioButton rbUserDefinedR;
+        private RadioButton rbUserDefinedD;
         private RadioButton rbBinR;
         private RadioButton rbOctR;
         private RadioButton rbHexR;
@@ -447,5 +535,11 @@
         private Button btClearR;
         private RadioButton rbDecR;
         private CheckBox ckbEscape;
+        private RadioButton rbDoubleD;
+        private RadioButton rbLongD;
+        private RadioButton rbIntD;
+        private RadioButton rbShortD;
+        private RadioButton rbByteD;
+        private CheckBox ckbEndian;
     }
 }

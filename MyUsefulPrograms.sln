@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GetComputerInfo", "GetCompu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerialComm", "SerialComm\SerialComm.csproj", "{A3567526-5E5B-4B3E-BA23-AF4D7D62FD74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertData", "ConvertData\ConvertData.csproj", "{D88AC456-C844-4F91-80AF-8E05F5E2FDA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConvertData", "ConvertData\ConvertData.csproj", "{D88AC456-C844-4F91-80AF-8E05F5E2FDA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "솔루션 항목", "솔루션 항목", "{C302DA5B-19A9-4929-AD2C-C4425DD9F12A}"
+	ProjectSection(SolutionItems) = preProject
+		ConvertThings.cs = ConvertThings.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
