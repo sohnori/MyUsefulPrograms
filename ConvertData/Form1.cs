@@ -1,14 +1,25 @@
 using System.Configuration;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Text.Unicode;
 
 namespace ConvertData
 {
     public partial class Form1 : Form
     {
+        const string UserDefined1 = "UnicodeToHex";
+        const string UserDefined2 = "StrToUnicode";
+        string[] inputBuff;
+        const int INPUT_BUFFER_MAX = 256;
+        int inputBuffIndex;        
+        int inputBuffPtr;
         public Form1()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            cbUserdefined.Items.AddRange(new object[] { UserDefined1, UserDefined2, "Test3", "Test4" });
+            inputBuff = new string[INPUT_BUFFER_MAX];
+            inputBuffIndex = 0;
+            inputBuffPtr = 0;
         }
         private void RbsInit()
         {
@@ -27,7 +38,7 @@ namespace ConvertData
         private void CkbsInit()
         {
             ckbEscape.Enabled = false;
-            ckbOrderStamp.Enabled = false;
+            ckbOrderStamp.Enabled = true;
             ckbEndian.Enabled = false;
             ckbSigned.Enabled = false;
         }
@@ -65,6 +76,15 @@ namespace ConvertData
                 case Keys.Enter:
                     btConvert.PerformClick();
                     break;
+                case Keys.Up:
+                    if (inputBuffPtr <= 0) inputBuffPtr = inputBuffIndex + 1;
+                    tbData.Text = inputBuff[--inputBuffPtr];
+                    break;
+                case Keys.Down:
+                    if (inputBuffPtr > (inputBuffIndex-1)) inputBuffPtr = -1;
+                    tbData.Text = inputBuff[++inputBuffPtr];
+                    break;
+
             }
         }
         private void TbData_KeyPress(object sender, KeyPressEventArgs e)
@@ -164,41 +184,45 @@ namespace ConvertData
         {
             byte[] bytes = new byte[tbData.Text.Length];
             bytes = Encoding.Default.GetBytes(tbData.Text);
-            if(rbAsciiD.Checked && rbHexR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.AsciiStrToHexStr(tbData.Text, ckbEscape.Checked) + "\r\n";
-            else if(rbAsciiD.Checked && rbOctR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.AsciiStrToOctStr(tbData.Text, ckbEscape.Checked) + "\r\n";
-            else if(rbAsciiD.Checked && rbBinR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.AsciiStrToBinStr(tbData.Text, ckbEscape.Checked) + "\r\n";
-            else if(rbDecD.Checked && rbByteR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.DecStrToByteStr(tbData.Text) + "\r\n";
-            else if (rbDecD.Checked && rbShortR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.DecStrToShortStr(tbData.Text) + "\r\n";
-            else if (rbDecD.Checked && rbIntegerR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.DecStrToInt32Str(tbData.Text) + "\r\n";
-            else if (rbDecD.Checked && rbLongR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.DecStrToLongStr(tbData.Text) + "\r\n";
-            else if (rbDecD.Checked && rbDoubleR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.DecStrToDoubleStr(tbData.Text) + "\r\n";
-            else if (rbDecD.Checked && rbFloatR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.DecStrToFloatStr(tbData.Text, ckbEndian.Checked) + "\r\n";
-
-            else if (rbHexD.Checked && rbAsciiR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.HexStrToAsciiStr(tbData.Text) + "\r\n";            
-            else if (rbHexD.Checked && rbDecR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.HexStrToDecStr(tbData.Text) + "\r\n";
-            else if (rbHexD.Checked && rbOctR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.HexStrToOctStr(tbData.Text) + "\r\n";
-            else if (rbHexD.Checked && rbBinR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.HexStrToBinStr(tbData.Text) + "\r\n";
-            else if (rbOctD.Checked && rbAsciiR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.OctStrToAsciiStr(tbData.Text) + "\r\n";
-            else if (rbOctD.Checked && rbHexR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.OctStrToHexStr(tbData.Text) + "\r\n";
-            else if (rbOctD.Checked && rbBinR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.OctStrToBinStr(tbData.Text) + "\r\n";
-            else if (rbBinD.Checked && rbAsciiR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.BinStrToAsciiStr(tbData.Text) + "\r\n";
-            else if (rbBinD.Checked && rbHexR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.BinStrToHexStr(tbData.Text) + "\r\n";
-            else if (rbBinD.Checked && rbOctR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.BinStrToOctStr(tbData.Text) + "\r\n";
-            else if (rbFloatD.Checked && rbDecR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.FloatStrToDecStr(tbData.Text, ckbEndian.Checked) + "\r\n";
-            else if (rbByteD.Checked && rbDecR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.ByteStrToDecStr(tbData.Text, ckbSigned.Checked) + "\r\n";
-            else if (rbShortD.Checked && rbDecR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.ShortStrToDecStr(tbData.Text, ckbSigned.Checked) + "\r\n";
-            else if (rbIntD.Checked && rbDecR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.Int32StrToDecStr(tbData.Text, ckbSigned.Checked) + "\r\n";
-            else if (rbLongD.Checked && rbDecR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.LongStrToDecStr(tbData.Text, ckbSigned.Checked) + "\r\n";
-            else if (rbDoubleD.Checked && rbDecR.Checked) tbResult.Text = tbResult.Text + ConvertData.ConvertThings.DoubleStrToDecStr(tbData.Text, ckbEndian.Checked) + "\r\n";
-            else
-            {
-                tbResult.Text = tbResult.Text + "Empty\n";
-            }
+            if (ckbOrderStamp.Checked) tbResult.Text += tbOsFore.Text;
+            if (rbAsciiD.Checked && rbHexR.Checked) tbResult.Text += ConvertData.ConvertThings.AsciiStrToHexStr(tbData.Text, ckbEscape.Checked);
+            else if (rbAsciiD.Checked && rbOctR.Checked) tbResult.Text += ConvertData.ConvertThings.AsciiStrToOctStr(tbData.Text, ckbEscape.Checked);
+            else if (rbAsciiD.Checked && rbBinR.Checked) tbResult.Text += ConvertData.ConvertThings.AsciiStrToBinStr(tbData.Text, ckbEscape.Checked);
+            else if (rbDecD.Checked && rbByteR.Checked) tbResult.Text += ConvertData.ConvertThings.DecStrToByteStr(tbData.Text);
+            else if (rbDecD.Checked && rbShortR.Checked) tbResult.Text += ConvertData.ConvertThings.DecStrToShortStr(tbData.Text);
+            else if (rbDecD.Checked && rbIntegerR.Checked) tbResult.Text += ConvertData.ConvertThings.DecStrToInt32Str(tbData.Text);
+            else if (rbDecD.Checked && rbLongR.Checked) tbResult.Text += ConvertData.ConvertThings.DecStrToLongStr(tbData.Text);
+            else if (rbDecD.Checked && rbDoubleR.Checked) tbResult.Text += ConvertData.ConvertThings.DecStrToDoubleStr(tbData.Text);
+            else if (rbDecD.Checked && rbFloatR.Checked) tbResult.Text += ConvertData.ConvertThings.DecStrToFloatStr(tbData.Text, ckbEndian.Checked);
+            else if (rbHexD.Checked && rbAsciiR.Checked) tbResult.Text += ConvertData.ConvertThings.HexStrToAsciiStr(tbData.Text);
+            else if (rbHexD.Checked && rbDecR.Checked) tbResult.Text += ConvertData.ConvertThings.HexStrToDecStr(tbData.Text);
+            else if (rbHexD.Checked && rbOctR.Checked) tbResult.Text += ConvertData.ConvertThings.HexStrToOctStr(tbData.Text);
+            else if (rbHexD.Checked && rbBinR.Checked) tbResult.Text += ConvertData.ConvertThings.HexStrToBinStr(tbData.Text);
+            else if (rbOctD.Checked && rbAsciiR.Checked) tbResult.Text += ConvertData.ConvertThings.OctStrToAsciiStr(tbData.Text);
+            else if (rbOctD.Checked && rbHexR.Checked) tbResult.Text += ConvertData.ConvertThings.OctStrToHexStr(tbData.Text);
+            else if (rbOctD.Checked && rbBinR.Checked) tbResult.Text += ConvertData.ConvertThings.OctStrToBinStr(tbData.Text);
+            else if (rbBinD.Checked && rbAsciiR.Checked) tbResult.Text += ConvertData.ConvertThings.BinStrToAsciiStr(tbData.Text);
+            else if (rbBinD.Checked && rbHexR.Checked) tbResult.Text += ConvertData.ConvertThings.BinStrToHexStr(tbData.Text);
+            else if (rbBinD.Checked && rbOctR.Checked) tbResult.Text += ConvertData.ConvertThings.BinStrToOctStr(tbData.Text);
+            else if (rbFloatD.Checked && rbDecR.Checked) tbResult.Text += ConvertData.ConvertThings.FloatStrToDecStr(tbData.Text, ckbEndian.Checked);
+            else if (rbByteD.Checked && rbDecR.Checked) tbResult.Text += ConvertData.ConvertThings.ByteStrToDecStr(tbData.Text, ckbSigned.Checked);
+            else if (rbShortD.Checked && rbDecR.Checked) tbResult.Text += ConvertData.ConvertThings.ShortStrToDecStr(tbData.Text, ckbSigned.Checked);
+            else if (rbIntD.Checked && rbDecR.Checked) tbResult.Text += ConvertData.ConvertThings.Int32StrToDecStr(tbData.Text, ckbSigned.Checked);
+            else if (rbLongD.Checked && rbDecR.Checked) tbResult.Text += ConvertData.ConvertThings.LongStrToDecStr(tbData.Text, ckbSigned.Checked);
+            else if (rbDoubleD.Checked && rbDecR.Checked) tbResult.Text += ConvertData.ConvertThings.DoubleStrToDecStr(tbData.Text, ckbEndian.Checked);
+            else if (rbUserDefinedD.Checked && cbUserdefined.Text == UserDefined1) tbResult.Text += ConvertData.ConvertThings.UnicodeToHexStr(tbData.Text);
+            else if (rbUserDefinedD.Checked && cbUserdefined.Text == UserDefined2) tbResult.Text += ConvertData.ConvertThings.StrToUnicode(tbData.Text);
+            else tbResult.Text += "Empty\n";
+            if (ckbOrderStamp.Checked) tbResult.Text += tbOsBack.Text;
+            tbResult.Text += "\r\n";
             // 胶农费促款
             tbResult.Select(tbResult.Text.Length - 1, 0);
             tbResult.ScrollToCaret();
             // 胶农费促款 肚促弗规过
             //tbResult.SelectionStart = tbResult.Text.Length;
+            inputBuff[inputBuffIndex++] = tbData.Text;            
+            if (inputBuffIndex >= INPUT_BUFFER_MAX) inputBuffIndex = 0;
+            inputBuffPtr = inputBuffIndex;
             tbData.Clear();
         }
     }
@@ -662,6 +686,47 @@ namespace ConvertData
                 result = Convert.ToString(BitConverter.ToDouble(bs, 0)); 
             }
             catch (Exception e) { result = e.Message + "\n"; }
+            return result;
+        }
+        public static string UnicodeToHexStr(string src)
+        {
+            string result = string.Empty;            
+            Encoding ascii = Encoding.ASCII;
+            Encoding utf8 = Encoding.UTF8;
+            Encoding utf16 = Encoding.Unicode;
+            Encoding utf32 = Encoding.UTF32;
+            string srcStr = Regex.Unescape(src);
+            byte[] asciiBytes = ascii.GetBytes(srcStr);
+            byte[] utf8Bytes = utf8.GetBytes(srcStr);
+            byte[] utf16Bytes = utf16.GetBytes(srcStr);
+            byte[] utf32Bytes = utf32.GetBytes(srcStr);
+
+            result = "ASCII : " + BitConverter.ToString(asciiBytes).Replace("-", " ") + "\r\n";
+            result += "UTF8 : " + BitConverter.ToString(utf8Bytes).Replace("-", " ") + "\r\n";
+            result += "Unicode : " + BitConverter.ToString(utf16Bytes).Replace("-", " ") + "\r\n";
+            result += "UTF32 : " + BitConverter.ToString(utf32Bytes).Replace("-", " ") + "\r\n";
+
+            return result;
+            
+        }
+        public static string StrToUnicode(string src)
+        {
+            string result = string.Empty;
+            Encoding ascii = Encoding.ASCII;
+            Encoding utf8 = Encoding.UTF8;
+            Encoding utf16 = Encoding.Unicode;
+            Encoding utf32 = Encoding.UTF32;
+            string srcStr = Regex.Unescape(src);
+            byte[] asciiBytes = ascii.GetBytes(srcStr);
+            byte[] utf8Bytes = utf8.GetBytes(srcStr);
+            byte[] utf16Bytes = utf16.GetBytes(srcStr);
+            byte[] utf32Bytes = utf32.GetBytes(srcStr);
+
+            result = "ASCII : " + ascii.GetString(asciiBytes) + "\r\n";
+            result += "UTF8 : " + utf8.GetString(utf8Bytes) + "\r\n";
+            result += "Unicode : " + utf16.GetString(utf16Bytes) + "\r\n";
+            result += "UTF32 : " + utf32.GetString(utf32Bytes) + "\r\n";
+
             return result;
         }
     }

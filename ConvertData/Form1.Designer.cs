@@ -46,6 +46,8 @@
             rbAsciiD = new RadioButton();
             tbData = new TextBox();
             gbResult = new GroupBox();
+            tbOsBack = new TextBox();
+            tbOsFore = new TextBox();
             ckbEndian = new CheckBox();
             btClearR = new Button();
             rbDecR = new RadioButton();
@@ -266,6 +268,8 @@
             // 
             // gbResult
             // 
+            gbResult.Controls.Add(tbOsBack);
+            gbResult.Controls.Add(tbOsFore);
             gbResult.Controls.Add(ckbEndian);
             gbResult.Controls.Add(btClearR);
             gbResult.Controls.Add(rbDecR);
@@ -290,6 +294,24 @@
             gbResult.TabStop = false;
             gbResult.Text = "Result";
             // 
+            // tbOsBack
+            // 
+            tbOsBack.Location = new Point(206, 272);
+            tbOsBack.MaxLength = 12;
+            tbOsBack.Name = "tbOsBack";
+            tbOsBack.PlaceholderText = "Post";
+            tbOsBack.Size = new Size(40, 23);
+            tbOsBack.TabIndex = 19;
+            // 
+            // tbOsFore
+            // 
+            tbOsFore.Location = new Point(163, 272);
+            tbOsFore.MaxLength = 12;
+            tbOsFore.Name = "tbOsFore";
+            tbOsFore.PlaceholderText = "Pre";
+            tbOsFore.Size = new Size(40, 23);
+            tbOsFore.TabIndex = 18;
+            // 
             // ckbEndian
             // 
             ckbEndian.AutoSize = true;
@@ -297,7 +319,7 @@
             ckbEndian.Location = new Point(252, 276);
             ckbEndian.Name = "ckbEndian";
             ckbEndian.Size = new Size(102, 19);
-            ckbEndian.TabIndex = 18;
+            ckbEndian.TabIndex = 20;
             ckbEndian.TabStop = false;
             ckbEndian.Text = "ReverseEndian";
             ckbEndian.UseVisualStyleBackColor = true;
@@ -327,7 +349,7 @@
             // ckbOrderStamp
             // 
             ckbOrderStamp.AutoSize = true;
-            ckbOrderStamp.Location = new Point(155, 276);
+            ckbOrderStamp.Location = new Point(66, 276);
             ckbOrderStamp.Name = "ckbOrderStamp";
             ckbOrderStamp.Size = new Size(91, 19);
             ckbOrderStamp.TabIndex = 17;
@@ -340,7 +362,7 @@
             textBox3.Location = new Point(6, 279);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
-            textBox3.Size = new Size(100, 16);
+            textBox3.Size = new Size(54, 16);
             textBox3.TabIndex = 14;
             textBox3.TabStop = false;
             textBox3.Text = "Testing......";
@@ -352,7 +374,7 @@
             ckbSigned.Location = new Point(360, 276);
             ckbSigned.Name = "ckbSigned";
             ckbSigned.Size = new Size(63, 19);
-            ckbSigned.TabIndex = 20;
+            ckbSigned.TabIndex = 21;
             ckbSigned.TabStop = false;
             ckbSigned.Text = "Signed";
             ckbSigned.UseVisualStyleBackColor = true;
@@ -541,5 +563,7 @@
         private RadioButton rbShortD;
         private RadioButton rbByteD;
         private CheckBox ckbEndian;
+        private TextBox tbOsFore;
+        private TextBox tbOsBack;
     }
 }
